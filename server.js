@@ -50,7 +50,7 @@ function Weather(data) {
     res.send(weatherData);
   });
   // helper function
-  function searchWeather(data) {
+  function searchWeather(query) {
     const weatherData = require('./data/weather.json');
     const weather = new Weather(weatherData.results[0]);
     weather.search_query = query;

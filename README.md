@@ -22,32 +22,32 @@
 
 Feature #1: Obtain Latitude and Longitude
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 10:30 am
 
-Finish time: _____
+Finish time: 11:45 am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hour 15 mins
 
 
 Feature #2: Retrieve Weather Information
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 11:45 am
 
-Finish time: _____
+Finish time: 1:45 pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2 hours
 
 
 Feature #3: Handle Errors When They Occur
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: TBD
 
-Finish time: _____
+Finish time: TBD
 
-Actual time needed to complete: _____
+Actual time needed to complete: TBD

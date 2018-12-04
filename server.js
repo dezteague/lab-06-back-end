@@ -20,6 +20,10 @@ app.use(cors());
 //     Response.json(animal);
 // });
 
+app.get('/home', function(req, res) {
+    res.sendFile(`${__dirname}/city-explorer-client/index.html`);
+  });
+
 app.get('/location', (req, res) => {
   console.log('my request object: ', req);
   const locationData = searchToLatLng(req.query.data);

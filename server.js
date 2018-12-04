@@ -13,6 +13,7 @@ const app = express();
 
 // app middleware
 app.use(cors());
+app.use(express.static('./'))
 
 // **************a test route that gives you turtle tim.*****************
 // app.get('/testroute', function (req, res) {

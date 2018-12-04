@@ -21,12 +21,17 @@ app.use(express.static('./'));
 //     Response.json(animal);
 // });
 
+// -------------------------LOCATION-------------------------
+function Location(data) {
+  this.formatted_query = data.formatted_address;
+  this.latitude = data.geometry.location.lat;
+  this.longitude = data.geometry.location.lng;
+}
 app.get('/location', (req, res) => {
   console.log('my request object: ', req);
   const locationData = searchToLatLng(req.query.data);
   res.send(locationData);
 });
-
 // helper function
 function searchToLatLng(query) {
   const geoData = require('./data/geo.json');
@@ -34,12 +39,23 @@ function searchToLatLng(query) {
   location.search_query = query;
   return location;
 }
-
-function Location(data) {
-  this.formatted_query = data.formatted_address;
-  this.latitude = data.geometry.location.lat;
-  this.longitude = data.geometry.location.lng;
-}
+// -------------------------WEATHER-------------------------
+function Weather(data) {
+    this.forecast = data.daily.summary
+    this.time = data.time
+  }
+  app.get('/weather', (req, res) => {
+    console.log('my request object: ', req);
+    const weatherData = searchWeather(req.query.data);
+    res.send(weatherData);
+  });
+  // helper function
+  function searchWeather(data) {
+    const weatherData = require('./data/weather.json');
+    const weather = new Weather(weatherData.results[0]);
+    weather.search_query = query;
+    return weather;
+  }
 
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);

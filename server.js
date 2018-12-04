@@ -13,7 +13,7 @@ const app = express();
 
 // app middleware
 app.use(cors());
-app.use(express.static('./'));
+// app.use(express.static('./'));
 
 // **************a test route that gives you turtle tim.*****************
 // app.get('/testroute', function (req, res) {
@@ -41,8 +41,8 @@ function searchToLatLng(query) {
 }
 // -------------------------WEATHER-------------------------
 function Weather(data) {
-    this.forecast = data.daily.summary
-    this.time = data.time
+    this.forecast = data.daily.summary;
+    this.time = data.currently.time;
   }
   app.get('/weather', (req, res) => {
     console.log('my request object: ', req);
@@ -52,7 +52,7 @@ function Weather(data) {
   // helper function
   function searchWeather(query) {
     const weatherData = require('./data/weather.json');
-    const weather = new Weather(weatherData.results[0]);
+    const weather = new Weather(weatherData);
     weather.search_query = query;
     return weather;
   }

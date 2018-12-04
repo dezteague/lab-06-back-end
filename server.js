@@ -21,25 +21,25 @@ app.use(cors());
 // });
 
 app.get('/location', (req, res) => {
-    console.log('my request object: ', req);
-    const locationData = searchToLatLng(req.query.data);
-    res.send(locationData);
+  console.log('my request object: ', req);
+  const locationData = searchToLatLng(req.query.data);
+  res.send(locationData);
 });
 
 // helper function
 function searchToLatLng(query) {
-    const geoData = require('./data/geo.json');
-    const location = new Location(geoData.results[0]);
-    location.search_query = query;
-    return location;
+  const geoData = require('./data/geo.json');
+  const location = new Location(geoData.results[0]);
+  location.search_query = query;
+  return location;
 }
 
 function Location(data) {
-    this.formatted_query = data.formatted_address;
-    this.latitude = data.geometry.location.lat;
-    this.longitude = data.geometry.location.lng;
+  this.formatted_query = data.formatted_address;
+  this.latitude = data.geometry.location.lat;
+  this.longitude = data.geometry.location.lng;
 }
 
 app.listen(PORT, () => {
-    console.log(`listening on ${PORT}`);
+  console.log(`listening on ${PORT}`);
 });

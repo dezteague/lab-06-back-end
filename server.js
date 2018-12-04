@@ -13,17 +13,13 @@ const app = express();
 
 // app middleware
 app.use(cors());
-app.use(express.static('./'))
+app.use(express.static('./'));
 
 // **************a test route that gives you turtle tim.*****************
 // app.get('/testroute', function (req, res) {
 //     let animal = { type: 'turtle', name: 'tim' };
 //     Response.json(animal);
 // });
-
-app.get('/home', function(req, res) {
-    res.sendFile(`${__dirname}/city-explorer-client/index.html`);
-  });
 
 app.get('/location', (req, res) => {
   console.log('my request object: ', req);
@@ -33,7 +29,7 @@ app.get('/location', (req, res) => {
 
 // helper function
 function searchToLatLng(query) {
-  const geoData = require('data/geo.json');
+  const geoData = require('./data/geo.json');
   const location = new Location(geoData.results[0]);
   location.search_query = query;
   return location;

@@ -41,21 +41,26 @@ function searchToLatLng(query) {
 }
 // -------------------------WEATHER-------------------------
 function Weather(data) {
-    this.forecast = data.daily.summary;
-    this.time = data.currently.time;
-  }
-  app.get('/weather', (req, res) => {
-    console.log('my request object: ', req);
-    const weatherData = searchWeather(req.query.data);
-    res.send(weatherData);
-  });
-  // helper function
-  function searchWeather(query) {
-    const weatherData = require('./data/weather.json');
-    const weather = new Weather(weatherData);
-    weather.search_query = query;
-    return weather;
-  }
+  this.forecast = data.daily.summary;
+  this.time = data.currently.time;
+}
+app.get('/weather', (req, res) => {
+  console.log('my request object: ', req);
+  const weatherData = searchWeather(req.query.data);
+  res.send(weatherData);
+});
+// helper function
+function searchWeather(query) {
+  const weatherData = require('./data/weather.json');
+  const weather = new Weather(weatherData);
+  weather.search_query = query;
+  return weather;
+}
+
+function handleError(err, res) {
+  console.error(err);
+  if (res) res.satus(500).send('Sorry, something broke');
+}
 
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
